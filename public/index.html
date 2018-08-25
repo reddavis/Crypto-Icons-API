@@ -1,0 +1,34 @@
+<h1>Crypto Icons API</h1>
+
+<p>This project builds ontop of the amazing <a href='https://github.com/atomiclabs/cryptocurrency-icons'>Cryptocurrency Icons</a> project.</p>
+
+<p>Rather than bundling all the images into our app, <a href='http://quidsapp.com'>Quids</a>, and having to ship an update everytime a new currency was added we built this service.</p>
+
+<h2>API</h2>
+
+<code>
+GET https://cryptoicons.org/api/:style/:currency/:size
+</code>
+
+<h3>Styles</h3>
+
+<ul>
+  <li><code>black</code></li>
+  <li><code>white</code></li>
+  <li><code>color</code></li>
+  <li><code>icon</code></li>
+</ul>
+
+<h3>Examples</h3>
+
+<p>
+  <code>
+  GET https://cryptoicons.org/api/color/eth/600
+  </code>
+</p>
+
+<p>
+  <code>
+  GET https://cryptoicons.org/api/black/btc/200
+  </code>
+</p>
