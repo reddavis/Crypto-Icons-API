@@ -27,6 +27,10 @@ GET https://cryptoicons.org/api/color/eth/600
 GET https://cryptoicons.org/api/black/btc/200
 ```
 
+## Deploy To Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## License
 
 All the .svg files are under the same license as the [Cryptocurrency Icons](https://github.com/atomiclabs/cryptocurrency-icons) project.
