@@ -1,0 +1,11 @@
+{
+  "name": "Crypto Icons",
+  "description": "API for crypto currency icons",
+  "repository": "https://github.com/reddavis/Crypto-Icons-API",
+  "website": "http://cryptoicons.org",
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
