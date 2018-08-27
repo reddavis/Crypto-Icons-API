@@ -1,0 +1,166 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #000;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  background: #f9f9f9;
+}
+
+header, section, footer {
+  position: relative;
+  padding: 30px 20px;
+  margin: 0 auto;
+  max-width: 800px;
+  overflow: hidden;
+}
+
+header, section {
+  border-bottom: 2px solid #000;
+}
+
+header {
+  padding: 60px 20px 30px;
+}
+
+footer {
+  padding: 30px 20px 60px;
+}
+
+header h1 {
+  line-height: 2.4rem;
+}
+
+header p {
+  color: #666;
+}
+
+section h2, section h3, section p, section ol, section ul {
+  margin-bottom: 20px;
+}
+
+section p:last-child, section ol:last-child, section ul:last-child {
+  margin: 0;
+}
+
+footer p {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+footer span {
+  color: #999;
+  padding: 0 10px;
+}
+
+code {
+  font-family: "SFMono-Regular", monospace;
+}
+
+p code {
+  position: relative;
+  display: inline-block;
+  line-height: 1.6rem;
+  padding: 6px 6px 5px;
+  margin: 0 -6px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  word-break: break-all;
+}
+
+p code:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #000;
+}
+
+p code::selection {
+  color: #fff;
+  background: #627EEA;
+}
+
+p code::-moz-selection {
+  color: #fff;
+  background: #627EEA;
+}
+
+a {
+  color: #000;
+  font-weight: bold;
+}
+
+ol, ul {
+  position: relative;
+  left: -30px;
+  width: calc(100% + 60px);
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0 20px;
+}
+
+ol li, ul li {
+  display: flex;
+  align-items: center;
+  flex: 1 1 calc(25% - 30px);
+  padding: 20px;
+  margin: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .05), 0 1px 2px 1px rgba(0, 0, 0, .05);
+}
+
+ol li:nth-child(2) {
+  color: #fff;
+  background: #000;
+}
+
+ol li:nth-child(3) {
+  color: #627EEA;
+  background: #E3E9FF;
+}
+
+ol li:nth-child(4) {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .05), 0 1px 2px 1px rgba(0, 0, 0, .05);
+}
+
+ol li img {
+  margin-right: 16px;
+}
+
+ul li {
+  flex: 1 1 calc(50% - 40px);
+  align-items: flex-start;
+  flex-direction: column;
+  background: #fff;
+}
+
+ul li:last-child {
+  opacity: .5;
+}
+
+ul li h3 {
+  margin: 0;
+}
+
+ul li p {
+  color: #666;
+  font-size: 1rem;
+  margin: 0;
+}
+
+ul li a {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  word-break: break-all;
+}
+
+ul li svg {
+  margin-right: 6px;
+}

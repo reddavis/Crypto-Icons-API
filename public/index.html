@@ -1,34 +1,118 @@
-<h1>Crypto Icons API</h1>
+<!DOCTYPE html>
+<html>
 
-<p>This project builds ontop of the amazing <a href='https://github.com/atomiclabs/cryptocurrency-icons'>Cryptocurrency Icons</a> project.</p>
+<head>
 
-<p>Rather than bundling all the images into our app, <a href='http://quidsapp.com'>Quids</a>, and having to ship an update everytime a new currency was added we built this service.</p>
+  <meta charset="UTF-8">
+	<meta name="keywords" content="cryptocurrency, crypto, bitcoin, icons, api, app">
+	<meta name="description" content="An API serving icons for cyrptocurrencies.">
 
-<h2>API</h2>
+	<title>Crypto Icons API</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-mobile-web-app-title" content="Crypto Icons API">
 
-<code>
-GET https://cryptoicons.org/api/:style/:currency/:size
-</code>
+	<link rel="stylesheet" type="text/css" href="main.css" media="all" />
 
-<h3>Styles</h3>
+	<meta property="og:site_name" content="Crypto Icons API">
+	<meta property="og:title" content="Crypto Icons API">
+  <meta property="og:description" content="An API serving icons for cyrptocurrencies.">
+	<meta property="og:image" content="https://cryptoicons.org/assets/images/opengraph.jpg">
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="600" />
+  <meta property="og:image:height" content="315" />
+	<meta property="og:url" content="https://cryptoicons.org">
+	<meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB" />
 
-<ul>
-  <li><code>black</code></li>
-  <li><code>white</code></li>
-  <li><code>color</code></li>
-  <li><code>icon</code></li>
-</ul>
+</head>
 
-<h3>Examples</h3>
+<body class="home">
 
-<p>
-  <code>
-  GET https://cryptoicons.org/api/color/eth/600
-  </code>
-</p>
+  <header>
+  	<h1>Crypto Icons API</h1>
+    <p>An API service for serving cryptocurrency icons.</p>
+  </header>
 
-<p>
-  <code>
-  GET https://cryptoicons.org/api/black/btc/200
-  </code>
-</p>
+  <section id="about">
+    <p>This project is a service for serving the icons created and maintained by
+      the <a href="https://github.com/atomiclabs/cryptocurrency-icons" target="_blank">Cryptocurrency Icons</a> project.</p>
+    <p>The service was originally built for use in
+      <a href="https://quidsapp.com" target="_blank">Quids for Mac</a> to avoid bundling every icon
+      with the client. Instead, we use this service to dynamically accept the SVG
+      source and render a PNG, using any of the included icon styles provided.</p>
+    <p>App developers can use this service as it's provided (which is 'as is', and
+      without uptime guarantees), or fork the
+      <a href="https://github.com/reddavis/Crypto-Icons-API" target="_blank">GitHub repo</a> and
+      deploy your own version of the service.</p>
+  </section>
+
+  <section id="api">
+    <h2>API</h2>
+
+    <p>
+      <code contenteditable>
+      GET https://cryptoicons.org/api/:style/:currency/:size
+      </code>
+    </p>
+
+    <h3>Styles</h3>
+
+    <ol>
+      <li>
+        <img src="https://cryptoicons.org/api/black/eth/120" width="60" height="60" />
+        <code>black</code>
+      </li>
+      <li>
+        <img src="https://cryptoicons.org/api/white/eth/120" width="60" height="60" />
+        <code>white</code>
+      </li>
+      <li>
+        <img src="https://cryptoicons.org/api/color/eth/120" width="60" height="60" />
+        <code>color</code>
+      </li>
+    </ol>
+
+    <h3>Examples</h3>
+
+    <p>
+      <code contenteditable>
+      GET https://cryptoicons.org/api/color/eth/600
+      </code>
+    </p>
+
+    <p>
+      <code contenteditable>
+      GET https://cryptoicons.org/api/black/btc/200
+      </code>
+    </p>
+  </section>
+
+  <section id="libraries">
+    <h2>Libraries</h2>
+
+    <ul>
+      <li>
+        <h3>CryptoIconURLBuilder</h3>
+        <p>
+          <span>Swift</span>
+        </p>
+        <p>
+          <a href="https://github.com/reddavis/CryptoIconURLBuilder" target="_blank">
+            <svg class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+            reddavis/CryptoIconURLBuilder
+          </a>
+        </p>
+      </li>
+      <li></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Built by <a href="http://red.to" target="_blank">@reddavis</a> <span>&bullet;</span>
+      The Cryptocurrency Icon project is maintained by
+      <a href="https://github.com/atomiclabs/cryptocurrency-icons" target="_blank">@atomiclabs</a></p>
+  </footer>
+
+</body>
+
+</html>
