@@ -115,6 +115,10 @@ ol li, ul li {
   box-shadow: 0 4px 20px rgba(0, 0, 0, .05), 0 1px 2px 1px rgba(0, 0, 0, .05);
 }
 
+ol li:nth-child(1) {
+  background: #efefef;
+}
+
 ol li:nth-child(2) {
   color: #fff;
   background: #000;
