@@ -52,6 +52,7 @@ app.get('/api/:style/:currency/:size', async(req, res) => {
       }
       else
       {
+        client.quit()
         console.log("Cache hit")
         res.set('Content-Type', 'image/png');
         res.send(result);
@@ -103,7 +104,9 @@ async function generatePNG(req, res, redis) {
   // Save to redis
   if (redis != null)
   {
-    redis.set(cacheKey, png);
+    redis.set(cacheKey, png, function(err) {
+      client.quit()
+    })
   }
   
   // Return response
