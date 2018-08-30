@@ -22,6 +22,7 @@ app.get('/api/:style/:currency/:size', async(req, res) => {
   const currency = req.params.currency
   const size = req.params.size
   const cacheKey = req.path
+  const filename = currency + '-' + style + '-' + size + '.png'
   
   // Redis
   var redisRetryStrategy = function(options) {
@@ -54,8 +55,7 @@ app.get('/api/:style/:currency/:size', async(req, res) => {
       {
         client.quit()
         console.log("Cache hit")
-        res.set('Content-Type', 'image/png');
-        res.send(result);
+        sendPNG(res, result, filename)
       }
     })
   })
@@ -63,12 +63,19 @@ app.get('/api/:style/:currency/:size', async(req, res) => {
 
 // Functions
 
+function sendPNG(response, png, filename) {
+  response.set('Content-Type', 'image/png')
+  response.header('Content-disposition', 'inline; filename=' + filename)
+  response.send(png)
+}
+
 async function generatePNG(req, res, redis) {
   // Params
   const style = req.params.style
   const currency = req.params.currency
   const size = req.params.size
   const cacheKey = req.path
+  const filename = currency + '-' + style + '-' + size + '.png'
     
   // SVG file path
   const svgPath = path.join(__dirname, 'public', 'svg', style, currency + '.svg');
@@ -110,8 +117,7 @@ async function generatePNG(req, res, redis) {
   }
   
   // Return response
-  res.set('Content-Type', 'image/png');
-  res.send(png);
+  sendPNG(res, png, filename)
 } 
 
 // Listen
