@@ -24,11 +24,17 @@ app.get('/api/:style/:currency/:size', async(req, res) => {
   const cacheKey = req.path
   const filename = currency + '-' + style + '-' + size + '.png'
   
+  // Validate size is > 0
+  if (size <= 0) {
+    res.status(400).send({'error' : 'Invalid size'});
+    return
+  }
+  
   // Redis
   var redisRetryStrategy = function(options) {
     if (options.error.code === 'ECONNREFUSED') 
     {
-      return;
+      return
     }
   }
   
