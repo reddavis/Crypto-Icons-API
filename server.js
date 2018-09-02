@@ -118,7 +118,7 @@ async function generatePNG(req, res, redis) {
   if (redis != null)
   {
     redis.set(cacheKey, png, function(err) {
-      client.quit()
+      redis.quit()
     })
   }
   
