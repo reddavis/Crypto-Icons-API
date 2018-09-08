@@ -23,42 +23,38 @@ app.get('/api/:style/:currency/:size/:color?', async(req, res) => {
   const size = req.params.size
   const cacheKey = req.path
   const filename = currency + '-' + style + '-' + size + '.png'
-  
+
   // Validate size is > 0
   if (size <= 0) {
     res.status(400).send({'error' : 'Invalid size'});
     return
   }
-  
+
   // Redis
   var redisRetryStrategy = function(options) {
-    if (options.error.code === 'ECONNREFUSED') 
-    {
+    if (options.error.code === 'ECONNREFUSED') {
       return
     }
   }
-  
+
   const redisURL = process.env.REDIS_URL || 'http://127.0.0.1:6379'
   var client = require('redis').createClient({
     url : process.env.REDIS_URL,
     return_buffers : true
   })
-  
+
   client.on('error', function (err) {
     client.quit()
     generatePNG(req, res, null)
   })
-  
+
   client.on('connect', function (err) {
     // Check cache
     client.get(cacheKey, async(error, result) => {
-      if (result == null)
-      {
+      if (result == null) {
         console.log("Cache miss")
         generatePNG(req, res, client)
-      }
-      else
-      {
+      } else {
         client.quit()
         console.log("Cache hit")
         sendPNG(res, result, filename)
@@ -83,18 +79,17 @@ async function generatePNG(req, res, redis) {
   const color = req.params.color
   const cacheKey = req.path
   const filename = currency + '-' + style + '-' + size + '.png'
-    
+
   // SVG file path
   const svgPath = path.join(__dirname, 'public', 'svg', style, currency + '.svg');
 
   // Check if file exists
-  if (!fs.existsSync(svgPath)) 
-  {
+  if (!fs.existsSync(svgPath)) {
     res.status(404).send(null);
     return
   }
 
-  const svg = fs.readFileSync(svgPath, 'utf8');  
+  const svg = fs.readFileSync(svgPath, 'utf8');
   const element = document.createElement('div')
   element.innerHTML = svg
 
@@ -123,22 +118,21 @@ async function generatePNG(req, res, redis) {
 
   // Convert to PNG
   const png = await convert(element.innerHTML, {
-    'height' : size, 
+    'height' : size,
     'width' : size,
     'puppeteer' : {'args' : ['--no-sandbox', '--disable-setuid-sandbox']}
   });
 
   // Save to redis
-  if (redis != null)
-  {
+  if (redis != null) {
     redis.set(cacheKey, png, function(err) {
       redis.quit()
     })
   }
-  
+
   // Return response
   sendPNG(res, png, filename)
-} 
+}
 
 // Listen
 var port = process.env.PORT || 3000;
