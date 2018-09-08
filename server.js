@@ -16,7 +16,7 @@ app.get('/', function(req, res) {
 })
 
 // GET png
-app.get('/api/:style/:currency/:size', async(req, res) => {
+app.get('/api/:style/:currency/:size/:color?', async(req, res) => {
   // Params
   const style = req.params.style
   const currency = req.params.currency
@@ -80,6 +80,7 @@ async function generatePNG(req, res, redis) {
   const style = req.params.style
   const currency = req.params.currency
   const size = req.params.size
+  const color = req.params.color
   const cacheKey = req.path
   const filename = currency + '-' + style + '-' + size + '.png'
     
@@ -99,6 +100,10 @@ async function generatePNG(req, res, redis) {
 
   const svgElement = element.getElementsByTagName("svg")[0]
 
+  // Define the circles
+  const colorCircle = element.getElementsByTagName("circle")[0]
+  const iconCircle = element.getElementsByTagName("use")[1]
+
   // Set viewBox so SVG resizes correctly
   const originalSize = svgElement.getAttribute('width')
   svgElement.setAttribute('viewBox', '0 0 ' + originalSize + ' ' + originalSize)
@@ -106,6 +111,15 @@ async function generatePNG(req, res, redis) {
   // Set requested size
   svgElement.setAttribute('width', size)
   svgElement.setAttribute('height', size)
+
+  // Set circle color, if `color` or `icon`
+  if (color != null && style == 'color') {
+    const colorString = '#' + color
+    colorCircle.setAttribute('fill', colorString)
+  } else if (color != null && style == 'icon') {
+    const colorString = '#' + color
+    iconCircle.setAttribute('fill', colorString)
+  }
 
   // Convert to PNG
   const png = await convert(element.innerHTML, {
