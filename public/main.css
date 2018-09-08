@@ -63,6 +63,12 @@ code {
   font-family: "SFMono-Regular", monospace;
 }
 
+code.inline {
+  background: #efefef;
+  border-radius: 10px;
+  margin: 0 5px;
+}
+
 p code {
   position: relative;
   display: inline-block;

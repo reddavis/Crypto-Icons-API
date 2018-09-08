@@ -79,17 +79,44 @@
       </li>
     </ol>
 
+    <h3>Color overrides</h3>
+
+    <p>
+      To override the color of <code class="inline">color</code> and
+      <code class="inline">icon</code> icons, an additional optional parameter
+      can be passed, any valid hexidecimal string such as
+      <code class="inline">ff00ff</code>.
+    </p>
+
+    <p>
+      <code contenteditable>
+      GET https://cryptoicons.org/api/:style/:currency/:size/:color
+      </code>
+    </p>
+
     <h3>Examples</h3>
 
     <p>
       <code contenteditable>
-      GET https://cryptoicons.org/api/color/eth/600
+      GET https://cryptoicons.org/api/icon/eth/200
       </code>
     </p>
 
     <p>
       <code contenteditable>
-      GET https://cryptoicons.org/api/black/btc/200
+      GET https://cryptoicons.org/api/white/btc/200
+      </code>
+    </p>
+
+    <p>
+      <code contenteditable>
+      GET https://cryptoicons.org/api/black/bth/400
+      </code>
+    </p>
+
+    <p>
+      <code contenteditable>
+      GET https://cryptoicons.org/api/color/ltc/600/ff00ff
       </code>
     </p>
   </section>
