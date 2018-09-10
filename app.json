@@ -6,7 +6,7 @@
   "addons": ["heroku-redis:hobby-dev"],
   "buildpacks": [
     {
-      "url": "heroku/nodejs",
+      "url": "urn:buildpack:heroku/nodejs",
       "url": "https://github.com/jontewks/puppeteer-heroku-buildpack.git"
     }
   ]
